@@ -26,6 +26,12 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { Button } from "./ui/button"
+
+import { authApi, useLogoutMutation } from "@/redux/features/auth/auth.api"
+import { useAppDispatch } from "@/redux/hook"
+import { useNavigate } from "react-router"
+
 
 export function NavUser({
   user,
@@ -36,7 +42,19 @@ export function NavUser({
     avatar: string
   }
 }) {
+
   const { isMobile } = useSidebar()
+
+       const [logout]= useLogoutMutation();
+        const dispatch = useAppDispatch();
+       const navigate = useNavigate();
+
+  const handleLogout = async  () => {
+    
+       await  logout(undefined);
+        dispatch(authApi.util.resetApiState());
+         navigate("/");
+    }
 
   return (
     <SidebarMenu>
@@ -98,7 +116,7 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <IconLogout />
-              Log out
+             <Button onClick={handleLogout}> Log out</Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

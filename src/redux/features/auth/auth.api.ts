@@ -30,7 +30,6 @@ export interface UserInfoResponse {
       query: () => ({
         url: "/auth/logout",
         method: "POST",
-     
       }),
     }),
     registerUser: builder.mutation({
@@ -45,7 +44,7 @@ export interface UserInfoResponse {
       query: () => ({
         url: "/auth/me",
         method: "GET",
-        withCredentials: true, // cookie পাঠানোর জন্য
+        withCredentials: true, 
       }),
     }),
 

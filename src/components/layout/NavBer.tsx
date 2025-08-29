@@ -13,7 +13,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { ModeToggle } from "./ModeToggler"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { authApi, useGetUserInfoQuery, useLogoutMutation } from "@/redux/features/auth/auth.api"
 import { useAppDispatch } from "@/redux/hook"
 
@@ -34,14 +34,15 @@ export default function NavBer() {
     const { data, isLoading, } = useGetUserInfoQuery();
     const [logout]= useLogoutMutation();
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
   if (isLoading) return <div>Loading...</div>;
 
 
   const handleLogout = async  () => {
-  
      await  logout(undefined);
       dispatch(authApi.util.resetApiState());
+        navigate("/");
   }
 
   return (

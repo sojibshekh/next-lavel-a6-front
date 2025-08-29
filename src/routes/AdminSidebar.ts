@@ -1,5 +1,6 @@
 import AllTransaction from "@/components/modules/Dashboard/AllTransaction";
-import UserAccount from "@/components/modules/Dashboard/UserAccount";
+import { AccountDEtails } from "@/components/modules/Dashboard/User/AccountDetails";
+
 import type { ISideBarItem } from "@/types";
 import { IconChartBar, IconDashboard, IconFolder, IconListDetails, IconUsers } from "@tabler/icons-react";
 
@@ -9,11 +10,11 @@ export const AdminSidebar:ISideBarItem[] = [
       title: "Dashboard",
       url: "/dashboard",
       icon: IconDashboard,
-      Component:UserAccount
+      Component:AccountDEtails
     },
     {
       title: "All Transactions",
-      url: "/dashboard/transaction",
+      url: "/dashboard/transaction/all",
       icon: IconListDetails,
       Component:AllTransaction,
     },

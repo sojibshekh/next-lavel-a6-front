@@ -22,20 +22,22 @@ import { Link } from "react-router"
 
 import { GetsidebarItems } from "@/utils/GetsidebarItems"
 import { useGetUserInfoQuery } from "@/redux/features/auth/auth.api"
+import type { TRole } from "@/types"
 
 
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const {data: userData}= useGetUserInfoQuery(undefined);
+
 console.log(userData)
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: userData?.data?.name ,
+    email: userData?.data?.email,
     avatar: "/avatars/shadcn.jpg",
   },
-  navMain: GetsidebarItems(userData?.data?.role),
+  navMain: GetsidebarItems(userData?.data?.role as TRole),
  
 }
 
