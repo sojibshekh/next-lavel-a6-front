@@ -1,4 +1,5 @@
 
+import AllTransaction from "@/components/modules/Dashboard/AllTransaction";
 import { AccountDEtails } from "@/components/modules/Dashboard/User/AccountDetails";
 
 import { IconChartBar, IconDashboard, IconFolder, IconListDetails, IconUsers } from "@tabler/icons-react";
@@ -15,7 +16,7 @@ export const UserSidebar = [
       title: "All Transactions",
       url: "/dashboard/transaction",
       icon: IconListDetails,
-      Component:AccountDEtails,
+      Component:AllTransaction,
     },
   
   ];
