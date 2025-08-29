@@ -14,6 +14,9 @@ import {
 } from "@/components/ui/popover"
 import { ModeToggle } from "./ModeToggler"
 import { Link } from "react-router"
+import { authApi, useGetUserInfoQuery, useLogoutMutation } from "@/redux/features/auth/auth.api"
+import { useAppDispatch } from "@/redux/hook"
+
 
 
 
@@ -25,7 +28,22 @@ const navigationLinks = [
   { href: "/about", label: "About" },
 ]
 
+
+
 export default function NavBer() {
+    const { data, isLoading, } = useGetUserInfoQuery();
+    const [logout]= useLogoutMutation();
+    const dispatch = useAppDispatch();
+
+  if (isLoading) return <div>Loading...</div>;
+
+
+  const handleLogout = async  () => {
+  
+     await  logout(undefined);
+      dispatch(authApi.util.resetApiState());
+  }
+
   return (
     <header className="border-b px-4 md:px-6">
       <div className="flex h-16 items-center justify-between gap-4">
@@ -111,12 +129,25 @@ export default function NavBer() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           <ModeToggle></ModeToggle>
-          <Button asChild variant="ghost" size="sm" className="text-sm">
+          {data?.data?.email && (
+               <Button onClick={handleLogout} >
+           LogOut
+          </Button>
+          )}
+
+          {!data?.data?.email && (
+              <>
+              <Button asChild variant="ghost" size="sm" className="text-sm">
             <Link to="/login">Login In</Link>
           </Button>
           <Button asChild size="sm" className="text-sm">
             <Link to="/registration">Registration </Link>
           </Button>
+              </>
+          )}
+          
+
+        
         </div>
       </div>
     </header>

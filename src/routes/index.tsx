@@ -1,10 +1,18 @@
 import App from "@/App";
 
+
 import About from "@/pages/About";
+import Dashboard from "@/pages/Dashboard";
+
 import LoginPage from "@/pages/Login";
 import RegistraionPage from "@/pages/Registation";
+import verify from "@/pages/verify";
+import { genarateRoute } from "@/utils/GenarateRoute";
+
 
 import { createBrowserRouter } from "react-router";
+import { AdminSidebar } from "./AdminSidebar";
+import { UserSidebar } from "./UserSidebar";
 
 
 
@@ -27,6 +35,26 @@ import { createBrowserRouter } from "react-router";
   {
     Component:RegistraionPage,
     path:"/registration"
+  },
+   {
+    Component:verify,
+    path:"/verify"
+  },
+  {
+    Component:Dashboard,  
+    path:"/dashboard",
+    children:[
+      ...genarateRoute(AdminSidebar),
+      
+    ]
+  },
+  {
+    Component:Dashboard,  
+    path:"/dashboard",
+    children:[
+      ...genarateRoute(UserSidebar),
+      
+    ]
   }
   
 ]);

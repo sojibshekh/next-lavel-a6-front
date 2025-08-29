@@ -1,12 +1,14 @@
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Password from "@/components/ui/Password"
+import { useRegisterUserMutation } from "@/redux/features/auth/auth.api"
+import { toast } from "sonner"
 
 
  
@@ -33,6 +35,12 @@ export function RegistrationForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+
+    const [ register]= useRegisterUserMutation();
+
+    const navigate = useNavigate();
+
+
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver:zodResolver(registerSchema),
         defaultValues:{
@@ -42,10 +50,23 @@ export function RegistrationForm({
             confomPassword:""
         }
     });
-    const onSubmit = (data:z.infer<typeof registerSchema>)=>{
-        console.log(data);
+    const onSubmit = async (data:z.infer<typeof registerSchema>)=>{
+        const userinfo = {
+            name:data.name,
+            email:data.email,
+            password:data.password
+        }
+        try {
+            await register(userinfo).unwrap();
+            toast.success("Registration successful! Please verify.");
+            form.reset();
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
     }
   return (
+   <>
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Registration to your account</h1>
@@ -137,5 +158,6 @@ export function RegistrationForm({
         </Link>
       </div>
     </div>
+   </>
   )
 }
