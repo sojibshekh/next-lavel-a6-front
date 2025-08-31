@@ -9,6 +9,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import Password from "@/components/ui/Password"
 import { useRegisterUserMutation } from "@/redux/features/auth/auth.api"
 import { toast } from "sonner"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
+
+
 
 
  
@@ -17,6 +21,8 @@ const registerSchema = z.object({
     error:"Name is too short"
   }).max(50),
   email:z.email(),
+   userRole: z.string().min(1,{message:"Select Role is required"}),
+
     password: z.string()
     .min(8, { message: "Password must be at least 8 characters" })
     .regex(/[A-Z]/, { message: "Password must contain at least one uppercase letter" })
@@ -28,6 +34,8 @@ const registerSchema = z.object({
 }).refine((data) => data.password === data.confomPassword, {
   message: "Passwords do not match",
   path: ["confomPassword"],
+ 
+
 })
 
 
@@ -47,16 +55,19 @@ export function RegistrationForm({
             name:"",
             email:"",
             password:"",
-            confomPassword:""
+            confomPassword:"",
+            userRole: ""  
         }
     });
     const onSubmit = async (data:z.infer<typeof registerSchema>)=>{
         const userinfo = {
             name:data.name,
             email:data.email,
-            password:data.password
+            password:data.password,
+            role: data.userRole,
         }
         try {
+          console.log("userinfo", userinfo);
             await register(userinfo).unwrap();
             toast.success("Registration successful! Please verify.");
             form.reset();
@@ -142,6 +153,32 @@ export function RegistrationForm({
             </FormItem>
           )}
         />
+
+
+         <FormField
+            control={form.control}
+            name="userRole"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>User Role</FormLabel>
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <FormControl>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Select Role" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="agent">Agent</SelectItem>
+                    <SelectItem value="user">User</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+
+       
         <Button type="submit" className="w-full">Registration</Button>
 
             </form>

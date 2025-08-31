@@ -21,7 +21,10 @@ const axiosBaseQuery =
         method,
         data,
         params,
-        headers,
+         headers: {
+    'Content-Type': 'application/json', // এখানে যুক্ত করুন
+    ...headers, // যদি call এ অন্য header থাকে, merge হবে
+  },
       })
       return { data: result.data }
     } catch (axiosError) {

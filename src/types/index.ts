@@ -9,3 +9,13 @@ export interface ISideBarItem{
 }
 
 export type TRole = "admin" | "user" | "agent";
+
+
+ export interface ITransaction {
+  _id: string;
+  amount: number;
+  date: string;
+  status: string;
+    type: string;
+  
+}

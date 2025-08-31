@@ -12,6 +12,8 @@ import { genarateRoute } from "@/utils/GenarateRoute";
 
 import { createBrowserRouter } from "react-router";
 import { AdminSidebar } from "./AdminSidebar";
+
+import { AgentSidebar } from "./agentSidebar";
 import { UserSidebar } from "./UserSidebar";
 
 
@@ -53,8 +55,16 @@ import { UserSidebar } from "./UserSidebar";
     path:"/dashboard",
     children:[
       ...genarateRoute(UserSidebar),
+    ]
+  },
+   {
+    Component:Dashboard,  
+    path:"/dashboard",
+    children:[
+      ...genarateRoute(AgentSidebar),
       
     ]
   }
+
   
 ]);

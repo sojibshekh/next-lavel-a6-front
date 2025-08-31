@@ -1,8 +1,9 @@
+import AllUser from "@/components/modules/Dashboard/Admin/AllUser";
 import AllTransaction from "@/components/modules/Dashboard/AllTransaction";
 import { AccountDEtails } from "@/components/modules/Dashboard/User/AccountDetails";
 
 import type { ISideBarItem } from "@/types";
-import { IconChartBar, IconDashboard, IconFolder, IconListDetails, IconUsers } from "@tabler/icons-react";
+import { IconChartBar, IconDashboard,  IconListDetails,  } from "@tabler/icons-react";
 
 
 export const AdminSidebar:ISideBarItem[] = [
@@ -19,21 +20,10 @@ export const AdminSidebar:ISideBarItem[] = [
       Component:AllTransaction,
     },
     {
-      title: "Analytics",
-      url: "/dashboard/analytics",
-      icon: IconChartBar,
-      Component:AllTransaction,
-    },
-    {
-      title: "Projects",
-      url: "/dashboard/projects",
-      icon: IconFolder,
-      Component:AllTransaction,
-    },
-    {
-      title: "All Users",
+      title: "All users",
       url: "/dashboard/users",
-      icon: IconUsers,
-      Component:AllTransaction,
+      icon: IconChartBar,
+      Component:AllUser,
     },
+   
   ];

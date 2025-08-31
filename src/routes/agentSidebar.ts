@@ -1,11 +1,14 @@
 
+import AddMoney from "@/components/modules/Dashboard/Agent/AddMoney";
+import Commission from "@/components/modules/Dashboard/Agent/Commission";
 import AllTransaction from "@/components/modules/Dashboard/AllTransaction";
 import { AccountDEtails } from "@/components/modules/Dashboard/User/AccountDetails";
 
-import {  IconDashboard, IconFolder, IconListDetails, IconUsers } from "@tabler/icons-react";
+import { IconDashboard, IconFolder, IconListDetails, IconUsers } from "@tabler/icons-react";
 
 
-export const UserSidebar = [
+
+export const AgentSidebar = [
     {
       title: "Dashboard",
       url: "/dashboard",
@@ -19,14 +22,16 @@ export const UserSidebar = [
       Component:AllTransaction,
     },
     {
-        title: "Withdraw  money",
-        url: "/dashboard/Withdraw-money",
+        title: "Cash in",
+        url: "/dashboard/cash-in",
         icon: IconUsers,
+        Component:AddMoney,
     },
     {
-        title: "Send  money",
-        url: "/dashboard/send-money",
+        title: "My  Commission ",
+        url: "/dashboard/Commission",
         icon: IconFolder,
+        Component:Commission,
     }
   
   ];

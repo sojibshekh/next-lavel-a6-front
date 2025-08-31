@@ -1,5 +1,5 @@
 import { baseApi } from "@/redux/baseApi";
-import type { use } from "react";
+
 // src/types/auth.ts
 export interface UserInfo {
   id: string;
@@ -20,14 +20,12 @@ interface WalletData {
   data: WalletData;
 }
 
-
 export interface UserInfoResponse {
   statusCode: number;
   success: boolean;
   message: string;
   data: UserInfo;
 }
-
 
 
 
@@ -45,11 +43,33 @@ export const walletApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+     commission: builder.query({
+      query: () => ({
+        url: "/wallet/commission-history",
+        method: "GET",
+      }),
+    }),
+
+addMoney: builder.mutation({
+      query: (payload) => ({
+        url: "/wallet/cash-in",
+        method: "POST",
+        data: payload,
+       
+      }),
+    
+    }),
+    
+
+
   }),
 });
 
 export const {
      useMyWalletQuery,
      useTransactionQuery,
+     useCommissionQuery,
+      useAddMoneyMutation,
+
      } = walletApi;
 
