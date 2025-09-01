@@ -30,7 +30,7 @@ import { Button } from "./ui/button"
 
 import { authApi, useLogoutMutation } from "@/redux/features/auth/auth.api"
 import { useAppDispatch } from "@/redux/hook"
-import { useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router"
 
 
 export function NavUser({
@@ -116,7 +116,15 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <IconLogout />
-             <Button onClick={handleLogout}> Log out</Button>
+              {user?.email &&(<Button onClick={handleLogout}> Log out</Button>)}
+             {!user?.email && (
+              <>
+              <Button asChild variant="ghost" size="sm" className="text-sm">
+            <Link to="/login">Login In</Link>
+          </Button>
+     
+              </>
+          )}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

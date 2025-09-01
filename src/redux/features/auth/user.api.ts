@@ -55,9 +55,15 @@ addMoney: builder.mutation({
         url: "/wallet/cash-in",
         method: "POST",
         data: payload,
-       
       }),
-    
+    }),
+
+    cashOutMoney: builder.mutation({
+      query: (payload) => ({
+        url: "/wallet/cash-out",
+        method: "POST",
+        data: payload,
+      }),
     }),
     
 
@@ -70,6 +76,7 @@ export const {
      useTransactionQuery,
      useCommissionQuery,
       useAddMoneyMutation,
+      useCashOutMoneyMutation,
 
      } = walletApi;
 

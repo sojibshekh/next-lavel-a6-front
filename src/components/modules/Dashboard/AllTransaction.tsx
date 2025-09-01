@@ -14,6 +14,8 @@ import type { ITransaction } from "@/types";
 
 const AllTransaction = () => {
     const {data} = useTransactionQuery({});
+
+    console.log(data)
   
     return (
         <div>

@@ -56,7 +56,7 @@ const AddMoney = ({
     
                 } catch (error) {
                     console.log(error);
-                    toast.error(error.data?.message || "add moeny successful!");
+                    toast.error(error?.data?.message || "add moeny successful!");
                 }
             }
     return (

@@ -179,7 +179,7 @@ export function RegistrationForm({
 
 
        
-        <Button type="submit" className="w-full">Registration</Button>
+        <Button type="submit" className="w-full cursor-pointer">Registration</Button>
 
             </form>
 
