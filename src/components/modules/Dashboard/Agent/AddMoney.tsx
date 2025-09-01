@@ -11,7 +11,7 @@ import z from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { toast } from "sonner"
-import { useAddMoneyMutation } from "@/redux/features/auth/user.api"
+
 
 
 
@@ -27,7 +27,7 @@ const AddMoney = ({
   ...props
 }: React.ComponentProps<"form">) => {
 
-        const [addMoney] = useAddMoneyMutation();
+        const [addMoney] = useSendMoneyMutation();
 
         
          const navigate = useNavigate();

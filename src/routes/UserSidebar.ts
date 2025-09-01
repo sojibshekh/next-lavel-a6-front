@@ -1,6 +1,7 @@
 
 import AllTransaction from "@/components/modules/Dashboard/AllTransaction";
 import { AccountDEtails } from "@/components/modules/Dashboard/User/AccountDetails";
+import SendMoney from "@/components/modules/Dashboard/User/SendMoney";
 import WithDrawMoney from "@/components/modules/Dashboard/User/WithDrawMoney";
 
 import {  IconDashboard, IconFolder, IconListDetails, IconUsers } from "@tabler/icons-react";
@@ -29,6 +30,7 @@ export const UserSidebar = [
         title: "Send  money",
         url: "/dashboard/send-money",
         icon: IconFolder,
+        Component:SendMoney,
     }
   
   ];
