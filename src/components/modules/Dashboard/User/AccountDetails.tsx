@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { useMyWalletQuery, type WalletResponse } from "@/redux/features/auth/user.api";
+import { useMyWalletQuery, type WalletResponse } from "@/redux/features/auth/wallte.api";
 
 
 export function AccountDEtails() {

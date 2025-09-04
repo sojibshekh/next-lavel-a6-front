@@ -1,78 +1,30 @@
 import { baseApi } from "@/redux/baseApi";
-
-// src/types/auth.ts
-export interface UserInfo {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-  
-}
-
-
-interface WalletData {
-  balance: number;
-}
-
- export interface WalletResponse {
-  success: boolean;
-  message: string;
-  data: WalletData;
-}
-
-export interface UserInfoResponse {
-  statusCode: number;
-  success: boolean;
-  message: string;
-  data: UserInfo;
-}
+import type { UserInfo } from "./wallte.api";
 
 
 
-export const walletApi = baseApi.injectEndpoints({
+
+
+export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    myWallet: builder.query<WalletResponse, void>({
+
+    allUsers: builder.query<UserInfo[], void>({
       query: () => ({
-        url: "/wallet/my-wallet",
-        method: "GET",
-      }),
-    }),
-    transaction: builder.query({
-      query: () => ({
-        url: "/wallet/transactions",
-        method: "GET",
-      }),
-    }),
-     commission: builder.query({
-      query: () => ({
-        url: "/wallet/commission-history",
+        url: "/user/all-user",
         method: "GET",
       }),
     }),
 
-addMoney: builder.mutation({
-      query: (payload) => ({
-        url: "/wallet/cash-in",
-        method: "POST",
-        data: payload,
-      }),
-    }),
+  updateUserProfile: builder.mutation({
+  query: (data) => ({
+    url: "/user/update-profile",
+    method: "PATCH",
+    data,   // ✅ axios expects data
+  }),
+}),
 
-    cashOutMoney: builder.mutation({
-      query: (payload) => ({
-        url: "/wallet/cash-out",
-        method: "POST",
-        data: payload,
-      }),
-    }),
 
-    sendMoney: builder.mutation({
-      query: (payload) => ({
-        url: "/wallet/send-money",
-        method: "POST",
-        data: payload,
-      }),
-    }),
+
     
 
 
@@ -80,12 +32,8 @@ addMoney: builder.mutation({
 });
 
 export const {
-     useMyWalletQuery,
-     useTransactionQuery,
-     useCommissionQuery,
-      useAddMoneyMutation,
-      useCashOutMoneyMutation,
-      useSendMoneyMutation,
+        useAllUsersQuery,
+        useUpdateUserProfileMutation,
 
-     } = walletApi;
+     } = userApi;
 

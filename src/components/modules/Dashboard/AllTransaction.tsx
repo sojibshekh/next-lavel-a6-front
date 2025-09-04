@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { useTransactionQuery } from '@/redux/features/auth/user.api';
+import { useTransactionQuery } from '@/redux/features/auth/wallte.api';
 import type { ITransaction } from "@/types";
 
 const AllTransaction = () => {

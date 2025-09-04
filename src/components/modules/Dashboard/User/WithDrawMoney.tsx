@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { useCashOutMoneyMutation } from '@/redux/features/auth/user.api';
+import { useCashOutMoneyMutation } from '@/redux/features/auth/wallte.api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -37,7 +37,7 @@ const WithDrawMoney = ({
                         amount:Number(data.amount),
                     }
     
-                    console.log("add money",cashOutInfo);
+                  
         
                     try {
                         const res =  await cashOutMoney(cashOutInfo).unwrap();

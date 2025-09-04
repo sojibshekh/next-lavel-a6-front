@@ -15,6 +15,7 @@ import { AdminSidebar } from "./AdminSidebar";
 
 import { AgentSidebar } from "./agentSidebar";
 import { UserSidebar } from "./UserSidebar";
+import UpdateProfile from "@/components/modules/Dashboard/UpdateProfile";
 
 
 
@@ -63,6 +64,16 @@ import { UserSidebar } from "./UserSidebar";
     children:[
       ...genarateRoute(AgentSidebar),
       
+    ]
+  },
+  {
+    Component:Dashboard,
+    path:"/dashboard",
+    children:[
+      {
+        Component:UpdateProfile,
+        path:"update-profile"
+      }
     ]
   }
 

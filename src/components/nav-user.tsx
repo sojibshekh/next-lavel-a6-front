@@ -102,16 +102,14 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <IconUserCircle />
-                Account
+
+          <Button asChild variant="ghost" size="sm" className="text-sm">
+              <Link to="/dashboard/update-profile"> Update Profile</Link>
+          </Button>
+               
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconCreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconNotification />
-                Notifications
-              </DropdownMenuItem>
+           
+            
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>

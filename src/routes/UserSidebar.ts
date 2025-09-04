@@ -31,6 +31,7 @@ export const UserSidebar = [
         url: "/dashboard/send-money",
         icon: IconFolder,
         Component:SendMoney,
-    }
+    },
+   
   
   ];
