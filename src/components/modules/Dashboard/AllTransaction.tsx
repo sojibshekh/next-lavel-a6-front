@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 
-interface TransactionsTableProps {
+ export interface TransactionsTableProps {
   role: "USER" | "AGENT" | "ADMIN";
   userId?: string;
 }
@@ -79,7 +79,7 @@ const TransactionsTable = ({ role, userId }: TransactionsTableProps) => {
                 <TableCell>{tx.amount}</TableCell>
                 <TableCell>{tx.status}</TableCell>
                 <TableCell>{tx.type}</TableCell>
-                <TableCell>{new Date(tx.createdAt).toLocaleString()}</TableCell>
+                <TableCell>{new Date(tx.amount).toLocaleString()}</TableCell>
               </TableRow>
             ))
           ) : (

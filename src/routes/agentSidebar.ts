@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import AddMoney from "@/components/modules/Dashboard/Agent/AddMoney";
 import Commission from "@/components/modules/Dashboard/Agent/Commission";
-import AllTransaction from "@/components/modules/Dashboard/AllTransaction";
+import TransactionsTable from "@/components/modules/Dashboard/AllTransaction";
+
 import { AccountDEtails } from "@/components/modules/Dashboard/User/AccountDetails";
+import type { ISideBarItem } from "@/types";
 
 import { IconDashboard, IconFolder, IconListDetails, IconUsers } from "@tabler/icons-react";
 
 
 
-export const AgentSidebar = [
+export const AgentSidebar: ISideBarItem<any>[]  = [
     {
       title: "Dashboard",
       url: "/dashboard",
@@ -19,7 +22,7 @@ export const AgentSidebar = [
       title: "All Transactions",
       url: "/dashboard/transaction",
       icon: IconListDetails,
-      Component:AllTransaction,
+      Component:TransactionsTable,
     },
     {
         title: "Cash in",

@@ -1,12 +1,13 @@
-import type { Icon } from "@tabler/icons-react";
+import type { IconProps } from "@tabler/icons-react";
+import type { ComponentType } from "react";
 
-
-export interface ISideBarItem{
-    title:string;
-    url:string;
-    icon?: Icon;
-    Component:React.ComponentType<unknown>;
+export interface ISideBarItem<TProps extends object = object> {
+  title: string;
+  url: string;
+  icon: ComponentType<IconProps>;   // ✅ প্রতিটা Tabler icon এর জন্য সঠিক টাইপ
+  Component: ComponentType<TProps>; // ✅ Sidebar component এর জন্য সঠিক টাইপ
 }
+
 
 export type TRole = "admin" | "user" | "agent";
 

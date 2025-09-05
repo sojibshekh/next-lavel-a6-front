@@ -16,7 +16,7 @@ import { AdminSidebar } from "./AdminSidebar";
 import { AgentSidebar } from "./agentSidebar";
 import { UserSidebar } from "./UserSidebar";
 import UpdateProfile from "@/components/modules/Dashboard/UpdateProfile";
-import EditUser from "@/components/modules/Dashboard/Admin/editUser";
+import EditUser from "@/components/modules/Dashboard/Admin/EditUser";
 
 
 
@@ -44,43 +44,26 @@ import EditUser from "@/components/modules/Dashboard/Admin/editUser";
     Component:verify,
     path:"/verify"
   },
+  
+
   {
-    Component:Dashboard,  
-    path:"/dashboard",
-    children:[
-      ...genarateRoute(AdminSidebar),
-      
-    ]
-  },
-  {
-    Component:Dashboard,  
-    path:"/dashboard",
-    children:[
-      ...genarateRoute(UserSidebar),
-    ]
-  },
-   {
-    Component:Dashboard,  
-    path:"/dashboard",
-    children:[
-      ...genarateRoute(AgentSidebar),
-      
-    ]
-  },
-  {
-    Component:Dashboard,
-    path:"/dashboard",
-    children:[
-      {
-        Component:UpdateProfile,
-        path:"update-profile"
-      },
-      {
-        Component:EditUser,
-        path:"users/:id/edit"
-      }
-    ]
-  }
+  Component: Dashboard,
+  path: "/dashboard",
+  children: [
+    ...genarateRoute(AdminSidebar),
+    ...genarateRoute(UserSidebar),
+    ...genarateRoute(AgentSidebar),
+    {
+      Component: UpdateProfile,
+      path: "update-profile"
+    },
+    {
+      Component: EditUser,
+      path: "users/:id/edit"
+    }
+  ]
+}
+
 
   
 ]);
