@@ -16,6 +16,7 @@ import { AdminSidebar } from "./AdminSidebar";
 import { AgentSidebar } from "./agentSidebar";
 import { UserSidebar } from "./UserSidebar";
 import UpdateProfile from "@/components/modules/Dashboard/UpdateProfile";
+import EditUser from "@/components/modules/Dashboard/Admin/editUser";
 
 
 
@@ -73,6 +74,10 @@ import UpdateProfile from "@/components/modules/Dashboard/UpdateProfile";
       {
         Component:UpdateProfile,
         path:"update-profile"
+      },
+      {
+        Component:EditUser,
+        path:"users/:id/edit"
       }
     ]
   }

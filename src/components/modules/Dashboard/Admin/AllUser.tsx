@@ -11,19 +11,17 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router';
 
 
 
 const AllUser = () => {
 
-   const { data: users, isLoading, error } = useAllUsersQuery();
+   const { data: users} = useAllUsersQuery();
 
-   console.log("API response:", users);
+     const navigate = useNavigate();
 
-if (isLoading) return <p>Loading...</p>;
-if (error) return <p>Error loading users</p>;
-
-    console.log(users);
+ 
     return (
         <div className='p-4'>
             <h3>all users</h3>
@@ -45,9 +43,16 @@ if (error) return <p>Error loading users</p>;
                         <TableCell className="font-medium">{user.name}</TableCell>
                         <TableCell>{user.role}</TableCell>
                         <TableCell>{user.email}</TableCell>
-                         <TableCell>{user?.isActive? "Active" : user.isActive?"Inactive" :""}</TableCell>
+                         <TableCell>
+                            {user?.isActive === "active"
+                              ? "Active"
+                              : user?.isActive === "inactive"
+                              ? "Inactive"
+                              : ""}
+                          </TableCell>
+
                         <TableCell className="">
-                           <Button variant="ghost" size="sm">Edit User</Button>
+                           <Button onClick={() => navigate(`/dashboard/users/${user._id}/edit`)} variant="ghost" size="sm">Edit User</Button>
                            <Button variant="ghost" size="sm" className='text-red-600'>Delete User</Button>
 
                         </TableCell>

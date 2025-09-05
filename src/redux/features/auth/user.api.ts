@@ -24,6 +24,17 @@ export const userApi = baseApi.injectEndpoints({
 }),
 
 
+updateUserByAdmin: builder.mutation({
+  query: ({ id, body }) => ({
+    url: `/user/${id}`,
+    method: "PATCH",
+    data: body,  // ✅ body পাঠাচ্ছি, data নয়
+  }),
+}),
+
+
+
+
 
     
 
@@ -34,6 +45,6 @@ export const userApi = baseApi.injectEndpoints({
 export const {
         useAllUsersQuery,
         useUpdateUserProfileMutation,
-
+        useUpdateUserByAdminMutation,
      } = userApi;
 

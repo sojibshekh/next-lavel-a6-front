@@ -7,6 +7,8 @@ import {
 import { Outlet } from "react-router"
 
 const AllDashboard=()=> {
+
+
   return (
     <SidebarProvider
       style={

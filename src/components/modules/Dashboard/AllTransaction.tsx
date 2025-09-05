@@ -1,55 +1,105 @@
-import { IconTrendingUp } from "@tabler/icons-react"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { useTransactionQuery } from '@/redux/features/auth/wallte.api';
+import { useState, useMemo } from "react";
+import { useTransactionQuery } from "@/redux/features/auth/wallte.api";
 import type { ITransaction } from "@/types";
 
-const AllTransaction = () => {
-    const {data} = useTransactionQuery({});
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
-    console.log(data)
-  
-    return (
-        <div>
+interface TransactionsTableProps {
+  role: "USER" | "AGENT" | "ADMIN";
+  userId?: string;
+}
 
-          
+const TransactionsTable = ({ role, userId }: TransactionsTableProps) => {
+  const [page, setPage] = useState(1);
+  const [typeFilter, setTypeFilter] = useState<string>("all");
 
-            {data?.data?.map((transaction:ITransaction) => (
-              <div key={transaction?._id} className="*:data-[slot=card]:from-primary/5 mt-5 *:data-[slot=card]:to-card dark:*:data-[slot=card]:bg-card grid grid-cols-2 gap-4 px-4 *:data-[slot=card]:bg-gradient-to-t *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
-                  <Card className="@container/card">
-                    <CardHeader>
-                      <CardDescription>Transection  Amount</CardDescription>
-                      <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-                       {transaction?.amount}
-                      </CardTitle>
-                      <CardAction>
-                        <Badge variant="outline">
-                          <IconTrendingUp />
-                          {transaction?.status}
-                        </Badge>
-                      </CardAction>
-                    </CardHeader>
-                    <CardFooter className="flex-col items-start gap-1.5 text-sm">
-                      <div className="line-clamp-1 flex gap-2 font-medium">
-                        Transaction Type : {transaction.type} <IconTrendingUp className="size-4" />
-                      </div>
-                      <div className="text-muted-foreground">
-                        Visitors for the last 6 months
-                      </div>
-                    </CardFooter>
-                  </Card>
-                </div>
-         ))}
+  const { data, isLoading } = useTransactionQuery({
+    userId: role === "USER" ? userId : undefined,
+    agentId: role === "AGENT" ? userId : undefined,
+  });
+
+  const transactions = data?.data || [];
+
+  // Filter front-end
+  const filteredTransactions = useMemo(() => {
+    if (typeFilter === "all") return transactions;
+    return transactions.filter((tx: ITransaction) => tx.type === typeFilter);
+  }, [transactions, typeFilter]);
+
+  const totalPages = Math.ceil(filteredTransactions.length / 10);
+
+  const currentData = filteredTransactions.slice((page - 1) * 10, page * 10);
+
+  return (
+    <div className="space-y-4 p-4">
+      {/* Filter by type */}
+      <div className="flex gap-4 items-end">
+        <div className="w-full max-w-xs">
+          <Label className="pb-4"> Transaction Type</Label>
+          <Select  value={typeFilter}
+            onValueChange={(val) => { setTypeFilter(val); setPage(1); }}>
+            <SelectTrigger className="w-full pt-2 pb-2">
+              <SelectValue placeholder="All Types" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="deposit">Deposit</SelectItem>
+              <SelectItem value="withdraw">Withdraw</SelectItem>
+              <SelectItem value="transfer">Transfer</SelectItem>
+              <SelectItem value="registration">Registration</SelectItem>
+              <SelectItem value="top-up">Top-up</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
-    );
+      </div>
+
+      {/* Transaction Table */}
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Amount</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Type</TableHead>
+            <TableHead>Date</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {isLoading ? (
+            <TableRow>
+              <TableCell colSpan={4}>Loading...</TableCell>
+            </TableRow>
+          ) : currentData.length ? (
+            currentData.map((tx: ITransaction) => (
+              <TableRow key={tx._id}>
+                <TableCell>{tx.amount}</TableCell>
+                <TableCell>{tx.status}</TableCell>
+                <TableCell>{tx.type}</TableCell>
+                <TableCell>{new Date(tx.createdAt).toLocaleString()}</TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={4}>No transactions found.</TableCell>
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex gap-2 justify-center mt-4">
+          <Button disabled={page === 1} onClick={() => setPage(page - 1)}>Prev</Button>
+          <span className="px-2 py-1">{page}</span>
+          <Button disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</Button>
+        </div>
+      )}
+    </div>
+  );
 };
 
-export default AllTransaction;
+export default TransactionsTable;

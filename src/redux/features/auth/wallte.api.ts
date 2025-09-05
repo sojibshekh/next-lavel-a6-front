@@ -7,6 +7,12 @@ export interface UserInfo {
   email: string;
   role: string;
   _id: string;
+   isDeleted?: string;
+    isActive?: string
+    isVerified?: boolean;  
+  createdAt?: string;
+  updatedAt?: string;
+  data?: [];
   
 }
 
