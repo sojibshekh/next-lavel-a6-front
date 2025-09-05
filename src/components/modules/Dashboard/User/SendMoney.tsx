@@ -14,7 +14,7 @@ import z from 'zod';
 const sendMoneySchema = z.object({
 
   recipientEmail:z.string(),
-  amount: z.coerce.number().positive() 
+  amount: z.number().positive() 
 })
 
 const SendMoney = ({
@@ -46,15 +46,16 @@ const SendMoney = ({
                 navigate("/dashboard");
 
             } catch (error) {
-                console.log(error);
-                toast.error(error?.data?.message || "send  moeny successful!");
+              
+                    const e = error as Error;
+                toast.error(e?.message || "send  moeny successful!");
             }
         }
 
 
     return (
          <div className="flex justify-center items-center ">
-                <div className={cn("flex flex-col gap-6 m-20 w-1/2 ", className)} {...props} >
+                <div className={cn("flex flex-col gap-6 m-20 w-1/2 ", className)}  >
                         <div className="flex flex-col items-center gap-2 text-center">
                         <h1 className="text-2xl font-bold">Send Money  to Other account</h1>
                         <p className="text-muted-foreground text-sm text-balance">
@@ -62,7 +63,7 @@ const SendMoney = ({
                         </p>
                         </div>
                         <Form {...form} >
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" {...props}>
                             <div className="grid gap-6">
                         <FormField
                                     control={form.control}

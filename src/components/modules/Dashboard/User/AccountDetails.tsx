@@ -6,11 +6,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { useMyWalletQuery, type WalletResponse } from "@/redux/features/auth/wallte.api";
+import { useMyWalletQuery,  } from "@/redux/features/auth/wallte.api";
 
 
 export function AccountDEtails() {
-   const { data: walletResponse } = useMyWalletQuery<WalletResponse>();
+  const { data: walletResponse, isLoading, error } = useMyWalletQuery();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Error loading wallet data.</div>;
+  }
+
+   // Safe access
+const balance = walletResponse?.data?.balance ?? "0";
 
 
   return (
@@ -19,7 +29,7 @@ export function AccountDEtails() {
         <CardHeader>
           <CardDescription>My balance</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-           {walletResponse?.data?.data?.balance ?? "0"}
+           { balance }
           </CardTitle>
           <CardAction>
             

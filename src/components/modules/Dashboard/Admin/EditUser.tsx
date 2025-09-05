@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useState, useEffect } from "react";
 import { useAllUsersQuery, useUpdateUserByAdminMutation } from "@/redux/features/auth/user.api";
@@ -5,12 +6,19 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useNavigate, useParams } from "react-router";
+import type { UserInfo } from "@/redux/features/auth/auth.api";
+
+
+type UsersResponse = {
+  data: UserInfo[];
+};
 
 const EditUser = () => {
   const { id } = useParams(); // get user id from URL
   const navigate = useNavigate();
 
-  const { data: users, refetch } = useAllUsersQuery();
+   const { data: usersResponse, refetch } = useAllUsersQuery();
+    const users = usersResponse as UsersResponse | undefined;
 
   const [updateUserByAdmin] = useUpdateUserByAdminMutation();
 

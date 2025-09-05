@@ -47,12 +47,12 @@ const UpdateProfile = ( {
   })
 
   useEffect(() => {
-  if (userData) {
+  if (userData?.data) {
     form.reset({
       name: userData?.data.name || "",
       email: userData?.data.email || "",
-      phone: userData?.data.phone || "",
-      password: "", // password খালি রাখবেন
+      phone:  "",
+      password: "", 
     })
   }
 }, [userData, form])
@@ -67,13 +67,14 @@ const UpdateProfile = ( {
       toast.success("Profile updated successfully!")
       form.reset()
     } catch (error) {
-      console.error(error)
-      toast.error(error.data?.message || "Update failed. Please try again.")
+      const e = error as Error; // type assertion
+
+      toast.error(e?.message || "Update failed. Please try again.")
     }
   }
 
     return (
-       <div className={cn("flex flex-col gap-6", className)} {...props}>
+       <div className={cn("flex flex-col gap-6", className)} >
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Update Your Profile</h1>
         <p className="text-muted-foreground text-sm text-balance">
@@ -81,7 +82,7 @@ const UpdateProfile = ( {
         </p>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 p-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 p-4" {...props}>
           <div className="grid gap-6">
 
             {/* Name */}

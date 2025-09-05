@@ -8,17 +8,18 @@ export interface UserInfo {
   role: string;
   _id: string;
    isDeleted?: string;
-    isActive?: string
-    isVerified?: boolean;  
+   isActive?: string
+   isVerified?: boolean;  
   createdAt?: string;
   updatedAt?: string;
   data?: [];
+  phone?: string;
   
 }
 
 
 interface WalletData {
-  balance: number;
+  balance: string | number; 
 }
 
  export interface WalletResponse {

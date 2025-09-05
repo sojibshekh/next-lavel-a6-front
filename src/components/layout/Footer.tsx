@@ -1,5 +1,5 @@
 import Logo from '@/assets/icons/Logo';
-import React from 'react';
+
 
 const Footer = () => {
     return (

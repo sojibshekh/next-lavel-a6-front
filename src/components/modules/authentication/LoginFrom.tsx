@@ -50,15 +50,15 @@ export function LoginForm({
 
                 navigate("/dashboard");
 
-            } catch (error) {
-                console.log(error);
-                toast.error(error.data?.message || "Login failed. Please try again.");
+            } catch (error ) {
+               const e = error as Error;
+                toast.error(e?.message || "Login failed. Please try again.");
             }
         }
 
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props} >
+    <div className={cn("flex flex-col gap-6", className)}  >
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Login to your account</h1>
         <p className="text-muted-foreground text-sm text-balance">
@@ -66,7 +66,7 @@ export function LoginForm({
         </p>
       </div>
        <Form {...form} >
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5" {...props}>
             <div className="grid gap-6">
          <FormField
                   control={form.control}

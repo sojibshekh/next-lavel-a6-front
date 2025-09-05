@@ -65,7 +65,13 @@ const data = {
      
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser
+  user={{
+    name: data.user?.name ?? "Unknown",
+    email: data.user?.email ?? "unknown@example.com",
+    avatar: data.user?.avatar ?? "/default-avatar.png"
+  }}
+/>
       </SidebarFooter>
     </Sidebar>
   )

@@ -12,12 +12,15 @@ import {
 } from "@/components/ui/table"
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router';
+type UsersResponse = {
+  data: UserInfo[];
+};
 
 
 
 const AllUser = () => {
 
-   const { data: users} = useAllUsersQuery();
+   const { data: users} = useAllUsersQuery() as { data: UsersResponse | undefined };
 
      const navigate = useNavigate();
 
