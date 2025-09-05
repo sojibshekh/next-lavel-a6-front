@@ -17,6 +17,10 @@ import { AgentSidebar } from "./agentSidebar";
 import { UserSidebar } from "./UserSidebar";
 import UpdateProfile from "@/components/modules/Dashboard/UpdateProfile";
 import EditUser from "@/components/modules/Dashboard/Admin/EditUser";
+import Home from "@/pages/Home";
+import Features from "@/pages/Features";
+import Faq from "@/pages/Faq";
+import Contact from "@/pages/Contact";
 
 
 
@@ -27,8 +31,24 @@ import EditUser from "@/components/modules/Dashboard/Admin/EditUser";
 
     children:[
       {
+        Component:Home,
+        path:"/"
+      }
+      ,{
         Component:About,
         path:"about"
+      },
+      {
+        Component:Features,
+        path:"/features"
+      },
+      {
+        Component:Faq,
+        path:"/faq"
+      },
+      {
+        Component:Contact,
+        path:"/contact"
       }
     ]
   },
@@ -44,6 +64,7 @@ import EditUser from "@/components/modules/Dashboard/Admin/EditUser";
     Component:verify,
     path:"/verify"
   },
+  
   
 
   {
