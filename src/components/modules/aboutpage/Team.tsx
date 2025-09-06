@@ -3,7 +3,7 @@
 const Team = () => {
     return (
         <div>
-            <a href="#" className="block rounded-md border border-gray-300 p-4 shadow-sm sm:p-6">
+            <a href="#" className="block rounded-md border border-foreground p-4 shadow-sm sm:p-6">
   <div className="sm:flex sm:justify-between sm:gap-4 lg:gap-6">
     <div className="sm:order-last sm:shrink-0">
       <img
@@ -14,13 +14,13 @@ const Team = () => {
     </div>
 
     <div className="mt-4 sm:mt-0">
-      <h3 className="text-lg font-medium text-pretty text-gray-900">
+      <h3 className="text-lg font-medium text-pretty text-foreground">
         How I built my first website with Nuxt, Tailwind CSS and Vercel
       </h3>
 
       <p className="mt-1 text-sm text-gray-700">By John Doe</p>
 
-      <p className="mt-4 line-clamp-2 text-sm text-pretty text-gray-700">
+      <p className="mt-4 line-clamp-2 text-sm text-pretty text-foreground">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
         maiores deleniti consectetur nobis et eaque.
       </p>
@@ -29,7 +29,7 @@ const Team = () => {
 
   <dl className="mt-6 flex gap-4 lg:gap-6">
     <div className="flex items-center gap-2">
-      <dt className="text-gray-700">
+      <dt className="text-foreground">
         <span className="sr-only"> Published on </span>
 
         <svg
@@ -48,11 +48,11 @@ const Team = () => {
         </svg>
       </dt>
 
-      <dd className="text-xs text-gray-700">31/06/2025</dd>
+      <dd className="text-xs text-foreground">31/06/2025</dd>
     </div>
 
     <div className="flex items-center gap-2">
-      <dt className="text-gray-700">
+      <dt className="text-foreground">
         <span className="sr-only"> Reading time </span>
 
         <svg
@@ -71,7 +71,7 @@ const Team = () => {
         </svg>
       </dt>
 
-      <dd className="text-xs text-gray-700">12 minutes</dd>
+      <dd className="text-xs text-foreground">12 minutes</dd>
     </div>
   </dl>
 </a>

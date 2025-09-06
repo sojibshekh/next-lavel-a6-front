@@ -118,3 +118,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* prevents horizontal scroll */
+}
+
+* {
+  box-sizing: border-box; /* keeps padding/margin from breaking layout */
+}

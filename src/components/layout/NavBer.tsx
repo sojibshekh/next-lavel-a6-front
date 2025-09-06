@@ -141,7 +141,7 @@ export default function NavBer() {
           {!data?.data?.email && (
               <>
               <Button asChild variant="ghost" size="sm" className="text-sm">
-            <Link to="/login">Login In</Link>
+            <Link to="/login">Login</Link>
           </Button>
           <Button asChild size="sm" className="text-sm">
             <Link to="/registration">Registration </Link>

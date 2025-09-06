@@ -1,4 +1,5 @@
 // ContactPage.tsx
+import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 
 const ContactFrom: React.FC = () => {
@@ -26,7 +27,10 @@ const ContactFrom: React.FC = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <div>
+        <h2 className=" font-bold size-full text-center text-5xl py-4">FAQ </h2>
+         <p className="text-center">This is where blog posts will be displayed.</p>
+        <div className="max-w-lg mx-auto mt-5 mb-10 p-6  bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
 
       {success && (
@@ -72,13 +76,9 @@ const ContactFrom: React.FC = () => {
           />
         </div>
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Submit
-        </button>
+       <Button>Submit</Button>
       </form>
+    </div>
     </div>
   );
 };

@@ -2,13 +2,16 @@
 
 const FaqSection = () => {
     return (
-        <div>
-            <div className="space-y-4">
+        <div  className="text-center">
+             <h2 className=" font-bold size-full text-center text-5xl py-4">Frequently Asked Questions </h2>
+         <p className="text-center ">Find quick answers to the most common questions about our Digital Wallet. </p>
+            <div className="space-y-4 container mx-auto px-4 py-16 sm:px-6 lg:px-8">
   <details className="group [&_summary::-webkit-details-marker]:hidden" open>
     <summary
       className="flex items-center justify-between gap-1.5 rounded-md border border-gray-100 bg-gray-50 p-4 text-gray-900"
     >
-      <h2 className="text-lg font-medium">Lorem ipsum dolor sit amet consectetur adipisicing?</h2>
+      <h2 className="text-lg font-medium">Q1: Is my money safe in this Digital Wallet?
+</h2>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -42,9 +45,7 @@ const FaqSection = () => {
     </summary>
 
     <p className="px-4 pt-4 text-gray-900">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa in,
-      recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis explicabo
-      consequuntur distinctio corporis earum similique!
+      A1: Yes. We use bank-grade security, data encryption, and JWT-based authentication to ensure your money and personal information are always protected.
     </p>
   </details>
 
@@ -52,7 +53,8 @@ const FaqSection = () => {
     <summary
       className="flex items-center justify-between gap-1.5 rounded-md border border-gray-100 bg-gray-50 p-4 text-gray-900"
     >
-      <h2 className="text-lg font-medium">Lorem ipsum dolor sit amet consectetur adipisicing?</h2>
+      <h2 className="text-lg font-medium">Q2: Can I send money to anyone?
+</h2>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -86,9 +88,7 @@ const FaqSection = () => {
     </summary>
 
     <p className="px-4 pt-4 text-gray-900">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa in,
-      recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis explicabo
-      consequuntur distinctio corporis earum similique!
+     A2: Absolutely. You can transfer money instantly to any registered user by using their phone number or email. Transactions are processed in real-time.
     </p>
   </details>
 
@@ -96,7 +96,8 @@ const FaqSection = () => {
     <summary
       className="flex items-center justify-between gap-1.5 rounded-md border border-gray-100 bg-gray-50 p-4 text-gray-900"
     >
-      <h2 className="text-lg font-medium">Lorem ipsum dolor sit amet consectetur adipisicing?</h2>
+      <h2 className="text-lg font-medium">Q3: What if I forget my password?
+</h2>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -130,9 +131,7 @@ const FaqSection = () => {
     </summary>
 
     <p className="px-4 pt-4 text-gray-900">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis molestias culpa in,
-      recusandae laboriosam neque aliquid libero nesciunt voluptate dicta quo officiis explicabo
-      consequuntur distinctio corporis earum similique!
+     A3: You can easily reset your password using the “Forgot Password” option on the login page. Just follow the steps, and you’ll regain access to your account securely.
     </p>
   </details>
 </div>

@@ -8,14 +8,12 @@ const Mission = () => {
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center md:gap-8">
       <div>
         <div className="max-w-prose md:max-w-none">
-          <h2 className="text-2xl font-semibold text-gray-900 sm:text-3xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+          Our Mission
           </h2>
 
-          <p className="mt-4 text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque saepe
-            architecto maiores repudiandae amet perferendis repellendus, reprehenderit voluptas
-            sequi.
+          <p className="mt-4 text-foreground">
+            Our mission is to simplify digital transactions and bring financial services within everyone’s reach. We strive to build a secure, fast, and user-friendly wallet that empowers users, supports agents, and gives admins full control — making money management seamless for all.
           </p>
         </div>
       </div>

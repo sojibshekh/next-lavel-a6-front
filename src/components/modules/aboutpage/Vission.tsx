@@ -15,14 +15,12 @@ const Vission = () => {
       </div>
       <div>
         <div className="max-w-prose md:max-w-none">
-          <h2 className="text-2xl font-semibold text-gray-900 sm:text-3xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+           Our Vision
           </h2>
 
-          <p className="mt-4 text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque saepe
-            architecto maiores repudiandae amet perferendis repellendus, reprehenderit voluptas
-            sequi.
+          <p className="mt-4 text-foreground">
+           Our vision is to create a world where digital financial services are accessible to everyone, regardless of location or background. We aim to become the most trusted digital wallet platform by combining innovation, security, and simplicity — empowering millions to take full control of their financial future.
           </p>
         </div>
       </div>
