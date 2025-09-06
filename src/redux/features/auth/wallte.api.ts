@@ -18,9 +18,19 @@ export interface UserInfo {
 }
 
 
-interface WalletData {
-  balance: string | number; 
+interface WalletInnerData {
+  _id: string;
+  balance: string | number;
+  currency: string;
+  user: string;
 }
+
+interface WalletData {
+  success: boolean;
+  message: string;
+  data: WalletInnerData;
+}
+
 
  export interface WalletResponse {
   success: boolean;
@@ -44,18 +54,22 @@ export const walletApi = baseApi.injectEndpoints({
         url: "/wallet/my-wallet",
         method: "GET",
       }),
+      providesTags: ["User"],
+   
     }),
     transaction: builder.query({
       query: () => ({
         url: "/wallet/transactions",
         method: "GET",
       }),
+      providesTags: ["User"],
     }),
      commission: builder.query({
       query: () => ({
         url: "/wallet/commission-history",
         method: "GET",
       }),
+      providesTags: ["User"],
     }),
 
 addMoney: builder.mutation({
@@ -64,6 +78,7 @@ addMoney: builder.mutation({
         method: "POST",
         data: payload,
       }),
+      
     }),
 
     cashOutMoney: builder.mutation({
@@ -72,6 +87,7 @@ addMoney: builder.mutation({
         method: "POST",
         data: payload,
       }),
+     
     }),
 
     sendMoney: builder.mutation({
@@ -80,6 +96,7 @@ addMoney: builder.mutation({
         method: "POST",
         data: payload,
       }),
+     
     }),
     
 

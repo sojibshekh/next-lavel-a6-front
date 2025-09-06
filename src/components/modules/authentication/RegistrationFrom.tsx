@@ -69,7 +69,7 @@ export function RegistrationForm({
         try {
           console.log("userinfo", userinfo);
             await register(userinfo).unwrap();
-            toast.success("Registration successful! Please verify.");
+            toast.success("Registration successful! ");
             form.reset();
             navigate("/login");
         } catch (error) {

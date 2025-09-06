@@ -25,6 +25,7 @@ export interface UserInfoResponse {
         method: "POST",
         data: logininfo,
       }),
+       invalidatesTags: ["User"], 
     }),
     logout: builder.mutation({
       query: () => ({
@@ -46,6 +47,7 @@ export interface UserInfoResponse {
         method: "GET",
         withCredentials: true, 
       }),
+      providesTags: ["User"],
     }),
 
   }),

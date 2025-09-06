@@ -56,7 +56,7 @@ const AllUser = () => {
 
                         <TableCell className="">
                            <Button onClick={() => navigate(`/dashboard/users/${user._id}/edit`)} variant="ghost" size="sm">Edit User</Button>
-                           <Button variant="ghost" size="sm" className='text-red-600'>Delete User</Button>
+                         
 
                         </TableCell>
                     </TableRow>

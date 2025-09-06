@@ -48,7 +48,7 @@ const TransactionsTable = ({ role, userId }: TransactionsTableProps) => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All</SelectItem>
-              <SelectItem value="deposit">Deposit</SelectItem>
+             
               <SelectItem value="withdraw">Withdraw</SelectItem>
               <SelectItem value="transfer">Transfer</SelectItem>
               <SelectItem value="registration">Registration</SelectItem>

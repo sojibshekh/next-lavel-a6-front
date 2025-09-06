@@ -64,9 +64,9 @@ const AddMoney = ({
         <div className="flex justify-center items-center ">
            <div className={cn("flex flex-col gap-6 m-20 w-1/2 ", className)}  >
                  <div className="flex flex-col items-center gap-2 text-center">
-                   <h1 className="text-2xl font-bold">Sent Money  to antoher account</h1>
+                   <h1 className="text-2xl font-bold">Ad  Money  to user account</h1>
                    <p className="text-muted-foreground text-sm text-balance">
-                     Enter your email below to Sent Money  to antoher account
+                     Enter user email below to Add Money  to user account
                    </p>
                  </div>
                   <Form {...form} >

@@ -10,7 +10,13 @@ import { useMyWalletQuery,  } from "@/redux/features/auth/wallte.api";
 
 
 export function AccountDEtails() {
-  const { data: walletResponse, isLoading, error } = useMyWalletQuery();
+  const { data: walletResponse, isLoading, error } = useMyWalletQuery(undefined, {
+  refetchOnMountOrArgChange: true,
+});
+
+console.log(walletResponse);
+
+
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -20,7 +26,9 @@ export function AccountDEtails() {
   }
 
    // Safe access
-const balance = walletResponse?.data?.balance ?? "0";
+const balance = walletResponse?.data?.data?.balance ?? "0";
+ // number type ভালো
+
 
 
   return (
