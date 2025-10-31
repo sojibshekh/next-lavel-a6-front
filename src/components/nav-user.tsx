@@ -43,6 +43,8 @@ export function NavUser({
   }
 }) {
 
+  console.log("user in nav", user);
+
   const { isMobile } = useSidebar()
 
        const [logout]= useLogoutMutation();

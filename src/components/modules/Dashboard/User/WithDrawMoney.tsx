@@ -86,7 +86,13 @@ const WithDrawMoney = ({
                             <FormItem>
                                 <FormLabel>Amount</FormLabel>
                                 <FormControl>
-                                <Input placeholder="50" type="number" {...field} />
+                                <Input
+                                placeholder="50"
+                                type="number"
+                                {...field}
+                                onChange={(e) => field.onChange(Number(e.target.value))}
+                                value={field.value}
+                                />
                                 </FormControl>
                             
                                 <FormMessage />
