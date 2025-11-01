@@ -99,7 +99,7 @@ const AddMoney = ({
                                     {...field}
                                     onChange={(e) => field.onChange(Number(e.target.value))}
                                     value={field.value}
-                                    />
+                                />
                                  </FormControl>
                               
                                  <FormMessage />

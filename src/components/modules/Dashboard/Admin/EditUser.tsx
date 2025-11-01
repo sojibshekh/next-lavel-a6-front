@@ -25,7 +25,9 @@ const EditUser = () => {
   // find the user from cache
   const user = users?.data?.find((u: any) => u._id === id);
 
-  const [formData, setFormData] = useState({ name: "", email: "", role: "" });
+  console.log("Editing user:", user);
+
+  const [formData, setFormData] = useState({ name: "", email: "", role: "",isActive:"" });
 
   useEffect(() => {
     if (user) {
@@ -33,6 +35,7 @@ const EditUser = () => {
         name: user.name || "",
         email: user.email || "",
         role: user.role || "",
+        isActive: user.isActive || "",
       });
     }
   }, [user]);
@@ -73,6 +76,17 @@ const EditUser = () => {
           value={formData.role}
           onChange={(e) => setFormData({ ...formData, role: e.target.value })}
         />
+        <select
+          className="w-full border rounded-md p-2"
+          value={formData.isActive}
+          onChange={(e) => setFormData({ ...formData, isActive: e.target.value })}
+        >
+          <option value="">Select Status</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+          <option value="blocked">Blocked</option>
+        </select>
+
         <div className="flex gap-2">
           <Button onClick={handleUpdate}>Update</Button>
           <Button variant="outline" onClick={() => navigate(-1)}>Cancel</Button>

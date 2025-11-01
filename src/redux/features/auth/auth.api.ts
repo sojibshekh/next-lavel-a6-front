@@ -5,6 +5,9 @@ export interface UserInfo {
   name: string;
   email: string;
   role: string;
+  isActive: string;
+  isBlocked: boolean;
+  _id: string;
   
 }
 

@@ -51,11 +51,11 @@ const AllUser = () => {
                               ? "Active"
                               : user?.isActive === "inactive"
                               ? "Inactive"
-                              : ""}
+                              :  user?.isActive === "blocked"? "Blocked": ""}
                           </TableCell>
 
                         <TableCell className="">
-                           <Button onClick={() => navigate(`/dashboard/users/${user._id}/edit`)} variant="ghost" size="sm">Edit User</Button>
+                           <Button onClick={() => navigate(`/dashboard/users/${user._id}/edit`)} variant="ghost" className='bg-yellow-500 hover:bg-yellow-600 text-white w-full sm:w-auto' size="sm">Update User</Button>
                          
 
                         </TableCell>

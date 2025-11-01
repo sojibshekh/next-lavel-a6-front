@@ -1,9 +1,9 @@
 
 
 import { Button } from "@/components/ui/button";
-import { useMyWalletQuery, useTransactionQuery, type UserInfo,  } from "@/redux/features/auth/wallte.api";
+import { useMyWalletQuery, useTransactionQuery,  } from "@/redux/features/auth/wallte.api";
 import TransactionsTable from "../AllTransaction";
-import { useGetUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { useGetUserInfoQuery, type UserInfo } from "@/redux/features/auth/auth.api";
 import { useNavigate } from "react-router";
 import { useAllUsersQuery } from "@/redux/features/auth/user.api";
 
@@ -28,11 +28,42 @@ const {data: userData}= useGetUserInfoQuery(undefined);
 const totalUsers = users?.data?.length ?? 0;
 
 
-const userId = userData?.data?._id;
+const userId = (userData?.data as UserInfo)?._id;
 const userRole = userData?.data?.role;
 
 
-console.log("okay", userId, userRole);
+
+
+
+
+   // Safe access
+const balance = walletResponse?.data?.data?.balance ?? "0";
+
+
+ const skip = !userRole;
+  const { data: transactionsData } = useTransactionQuery(
+    {
+      userId: userRole === "user" ? userId : undefined,
+      agentId: userRole === "agent" ? userId : undefined,
+    },
+    { skip }
+  );
+
+
+
+  const totalTransactions = transactionsData?.data?.length ?? 0;
+
+  // userRole কে TransactionsTable type অনুযায়ী map করা
+const roleMap: Record<string, "USER" | "AGENT" | "ADMIN"> = {
+  user: "USER",
+  agent: "AGENT",
+  admin: "ADMIN",
+};
+
+// যদি undefined হয় default "USER" নেবে
+const mappedRole = roleMap[userRole ?? "user"];
+
+
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -40,19 +71,6 @@ console.log("okay", userId, userRole);
   if (error) {
     return <div>Error loading wallet data.</div>;
   }
-
-   // Safe access
-const balance = walletResponse?.data?.data?.balance ?? "0";
-
-
- const { data: transactionsData } = useTransactionQuery({
-    userId: userRole === "user" ? userId : undefined,
-    agentId: userRole === "agent" ? userId : undefined,
-  });
-
-
-  const totalTransactions = transactionsData?.data?.length ?? 0;
-
 
  
 
@@ -86,7 +104,7 @@ const balance = walletResponse?.data?.data?.balance ?? "0";
         {/* Quick Actions */}
         <div className="p-6 bg-gradient-to-br from-green-50 to-white rounded-2xl shadow border">
           <h3 className="text-gray-500 text-sm mb-3">Quick Actions</h3>
-          {
+          { 
             userRole === "user" ? 
             <div>
               <div className="flex flex-wrap gap-2">
@@ -129,7 +147,7 @@ const balance = walletResponse?.data?.data?.balance ?? "0";
       {/* Recent Transactions */}
       <div className="bg-white rounded-2xl shadow p-6 mt-6">
         <h2 className="text-lg font-semibold mb-4">Recent Transactions</h2>
-          <TransactionsTable userId={userId} role={userRole} />
+          <TransactionsTable userId={userId} role={mappedRole} />
 
       
       </div>

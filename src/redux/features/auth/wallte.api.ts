@@ -62,7 +62,7 @@ export const walletApi = baseApi.injectEndpoints({
         url: "/wallet/transactions",
         method: "GET",
       }),
-      providesTags: ["User"],
+       providesTags: [{ type: "Transaction" }],
     }),
      commission: builder.query({
       query: () => ({
@@ -78,6 +78,7 @@ addMoney: builder.mutation({
         method: "POST",
         data: payload,
       }),
+       invalidatesTags: [{ type: "Transaction" }]
       
     }),
 
@@ -87,6 +88,7 @@ addMoney: builder.mutation({
         method: "POST",
         data: payload,
       }),
+      invalidatesTags: [{ type: "Transaction" }],
      
     }),
 
@@ -96,6 +98,7 @@ addMoney: builder.mutation({
         method: "POST",
         data: payload,
       }),
+      invalidatesTags: [{ type: "Transaction" }],
      
     }),
     
